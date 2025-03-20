@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link , useNavigate } from "react-router-dom";
 import { signInStart, signInSuccess, singInFailure } from '../redux/user/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import OAuthenticate from "../Components/OAuthenticate";
+
 
 export default function SignIn() {
     const [formData, setFormData] = useState({});
@@ -93,7 +93,7 @@ export default function SignIn() {
                             </>
                         ) : 'Sign In'}
                     </Button>
-                    <OAuthenticate />
+                 
                 </form>
                 <div className="flex gap-2 text-sm mt-5 ">
                     <span>Forgot Password?</span>

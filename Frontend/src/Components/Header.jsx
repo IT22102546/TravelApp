@@ -3,7 +3,6 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { HiShoppingBag, HiUser, HiMenu } from 'react-icons/hi';
 import { useDispatch, useSelector } from "react-redux";
 import { signOut } from "../redux/user/userSlice";
-import logo from '../assets/images/Logo.png';
 import { useLocation } from "react-router-dom";
 
 export default function Header() {
@@ -11,9 +10,7 @@ export default function Header() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const isAboutUsActive = location.pathname === "/history" || location.pathname === "/achievements";
-  const isNewsActive = location.pathname === "/articles" || location.pathname === "/activities";
-  const isTeamActive = location.pathname === "/apply-membership" || location.pathname === "/bearers";
+ 
 
   const handleSignOut = async () => {
     try {
@@ -31,14 +28,14 @@ export default function Header() {
   };
 
   return (
-    <Navbar className="border-b-2 relative z-50" style={{ background: 'linear-gradient(to left, rgb(170, 63, 47), black)' }}>
+    <Navbar className="border-b-2 relative z-50 bg-green-500" >
       <div className="container mx-auto flex items-center justify-between py-4">
 
         {/* Logo */}
         <div className="flex items-center">
           <NavLink to="/" className="self-center whitespace-nowrap text-3xl font-semibold font-tangerine text-white">
             <img
-              src={logo}
+              src={""}
               alt="Logo"
               style={imageStyle}
             />
@@ -51,57 +48,20 @@ export default function Header() {
             <NavLink to="/" className={({ isActive }) => isActive ? "text-black" : "text-white"}>
               Home
             </NavLink>
-            <Dropdown label={<span className={isAboutUsActive ? "text-black" : "text-white"}>About Us</span>} inline>
-              <Link to="/history">
-                <DropdownItem>History</DropdownItem>
-              </Link>
-              <Link to="/achievements">
-                <DropdownItem>Achievements</DropdownItem>
-              </Link>
-              <Link to="/objectives">
-                <DropdownItem>Objectives</DropdownItem>
-              </Link>
-            </Dropdown>
+           
 
-            <Dropdown label={<span className={isTeamActive ? "text-black" : "text-white"}>Team</span>} inline>
-              <Link to="/apply-membership">
-                <DropdownItem>Membership</DropdownItem>
-              </Link>
-              <Link to="/bearers">
-                <DropdownItem> Office Bearers</DropdownItem>
-              </Link>
-            </Dropdown>
-
-            <NavLink to="/photo" className={({ isActive }) => isActive ? "text-black" : "text-white"}>
-              Photos
+            
+            <NavLink to="/itinerary" className={({ isActive }) => isActive ? "text-black" : "text-white"}>
+              Travel Itinary
             </NavLink>
 
-            <Dropdown label={<span className={isNewsActive ? "text-black" : "text-white"}>News</span>} inline>
-              <Link to="/article">
-                <DropdownItem>Articles</DropdownItem>
-              </Link>
-              <Link to="/activities">
-                <DropdownItem>Guid Activities</DropdownItem>
-              </Link>
-            </Dropdown>
-            <NavLink to="/product-page" className={({ isActive }) => isActive ? "text-black" : "text-white"}>
-              Scout Shop
-            </NavLink>
-            <NavLink to="/contact" className={({ isActive }) => isActive ? "text-black" : "text-white"}>
-              Contact Us
-            </NavLink>
+            
 
           </div>
 
           {/* User controls */}
           <div className="flex items-center space-x-4">
-            {currentUser && (
-              <Link to="/cart">
-                <div className="flex relative">
-                  <HiShoppingBag className="mr-1 text-white" style={{ fontSize: '24px' }} />
-                </div>
-              </Link>
-            )}
+           
 
             {currentUser ? (
               <Dropdown arrowIcon={false} inline label={
@@ -139,39 +99,11 @@ export default function Header() {
           <NavLink to="/" className={({ isActive }) => isActive ? "text-black" : "text-white"}>
             Home
           </NavLink>
-          <Dropdown label={<span className={isAboutUsActive ? "text-black" : "text-white"}>About Us</span>} inline>
-            <Link to="/history">
-              <DropdownItem>History</DropdownItem>
-            </Link>
-            <Link to="/achievements">
-              <DropdownItem>Achievements</DropdownItem>
-            </Link>
-          </Dropdown>
-          <Dropdown label={<span className={isTeamActive ? "text-black" : "text-white"}>Team</span>} inline>
-            <Link to="/apply-membership">
-              <DropdownItem>Membership</DropdownItem>
-            </Link>
-            <Link to="/bearers">
-              <DropdownItem>Office Bearers</DropdownItem>
-            </Link>
-          </Dropdown>
-          <NavLink to="/photo" className={({ isActive }) => isActive ? "text-black" : "text-white"}>
-            Photos
+            
+          <NavLink to="/itinerary" className={({ isActive }) => isActive ? "text-black" : "text-white"}>
+              Travel Itinary
           </NavLink>
-          <Dropdown label={<span className={isNewsActive ? "text-black" : "text-white"}>News</span>} inline>
-            <Link to="/article">
-              <DropdownItem>Articles</DropdownItem>
-            </Link>
-            <Link to="/activities">
-              <DropdownItem>Guid Activities</DropdownItem>
-            </Link>
-          </Dropdown>
-          <NavLink to="/product-page" className={({ isActive }) => isActive ? "text-black" : "text-white"}>
-            Scout Shop
-          </NavLink>
-          <NavLink to="/contact" className={({ isActive }) => isActive ? "text-black" : "text-white"}>
-            Contact Us
-          </NavLink>
+          
         </div>
       </Navbar.Collapse>
     </Navbar>

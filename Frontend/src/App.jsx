@@ -7,6 +7,9 @@ import Header from './Components/Header';
 import DashBoard from './Pages/DashBoard';
 import PrivateRoute from './Components/PrivateRoute';
 import OnlyAdminPrivateRoute from './Components/OnlyAdminPrivateRoute';
+import AddItinary from './Pages/AddItinary';
+import Itinerary from './Pages/Itinerary';
+import UpdateItinerary from './Pages/UpdateItinerary';
 
 export default function App() {
   return (
@@ -16,6 +19,7 @@ export default function App() {
         <Route path="/" element={<Home/>}/>
         <Route path="/sign-in" element={<SignIn/>}/>
         <Route path="/sign-up" element={<SignUp/>}/>
+        <Route path ="/itinerary" element={<Itinerary/>}/>
        
 
         <Route element={<PrivateRoute/>}>
@@ -24,6 +28,8 @@ export default function App() {
         </Route>
 
         <Route element={<OnlyAdminPrivateRoute/>}>
+        <Route path="/addItinary" element={<AddItinary/>}/>
+        <Route path="//update-itinerary/:id" element={<UpdateItinerary/>}/>
          
         </Route>
 

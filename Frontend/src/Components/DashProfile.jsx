@@ -189,24 +189,14 @@ export default function DashProfile() {
           defaultValue={currentUser.username} onChange={handleChange}
         />
 
-        <TextInput
-          type='text'
-          id='regNo'
-          placeholder='Registration Number'
-          defaultValue={currentUser.regNo} onChange={handleChange}
-        />
+        
         <TextInput
           type='email'
           id='email'
           placeholder='email'
           defaultValue={currentUser.email}onChange={handleChange}
         />
-        <TextInput
-          type='text'
-          id='batch'
-          placeholder='Batch'
-          defaultValue={currentUser.batch}onChange={handleChange}
-        />
+        
          <TextInput
           type='text'
           id='adress'
@@ -257,7 +247,7 @@ export default function DashProfile() {
               className='w-full , text-black bg-slate-400 '
               outline
             >
-              Add Trip Itinary
+              Add Trip Itinerary
             </Button>
           </Link>
         )}   
