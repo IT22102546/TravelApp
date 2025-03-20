@@ -52,7 +52,7 @@ export default function Header() {
 
             
             <NavLink to="/itinerary" className={({ isActive }) => isActive ? "text-black" : "text-white"}>
-              Travel Itinary
+              Travel Itinerary
             </NavLink>
 
             
@@ -101,7 +101,7 @@ export default function Header() {
           </NavLink>
             
           <NavLink to="/itinerary" className={({ isActive }) => isActive ? "text-black" : "text-white"}>
-              Travel Itinary
+             Travel Itinerary
           </NavLink>
           
         </div>
