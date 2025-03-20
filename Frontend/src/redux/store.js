@@ -21,6 +21,6 @@ export const store = configureStore({
   reducer: persistedReducer
 });
 
-store.dispatch(getCartTotal());
+
 
 export const persistor = persistStore(store);

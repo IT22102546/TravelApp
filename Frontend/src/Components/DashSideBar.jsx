@@ -1,6 +1,6 @@
 import { Sidebar } from "flowbite-react";
 import { useEffect, useState } from "react";
-import { HiArchive, HiArrowSmRight, HiFolderAdd, HiGift, HiOutlineUserGroup, HiUser, HiOutlineMail, HiPhotograph, HiStar, HiUserAdd, HiReceiptRefund, HiAcademicCap } from 'react-icons/hi';
+import {  HiArrowSmRight, HiFlag, HiUser } from 'react-icons/hi';
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import { signOut } from "../redux/user/userSlice";
@@ -50,79 +50,14 @@ export default function DashSideBar() {
 
           {currentUser?.isAdmin && (
             <>
-              <Link to='/dashboard?tab=users' key="users">
+             
+              <Link to='/dashboard?tab=itinary' key="itinary">
                 <Sidebar.Item
-                  active={tab === 'users'}
-                  icon={HiOutlineUserGroup}
+                  active={tab === 'itinary'}
+                  icon={HiFlag}
                   as='div'
                 >
-                  Users
-                </Sidebar.Item>
-              </Link>
-
-              <Link to='/dashboard?tab=products' key="products">
-                <Sidebar.Item
-                  active={tab === 'products'}
-                  icon={HiGift}
-                  as='div'
-                >
-                  Products
-                </Sidebar.Item>
-              </Link>
-
-              <Link to='/dashboard?tab=orders' key="orders">
-                <Sidebar.Item
-                  active={tab === 'orders'}
-                  icon={HiArchive}
-                  as='div'
-                >
-                  Orders
-                </Sidebar.Item>
-              </Link>
-
-              <Link to='/dashboard?tab=membership' key="membership">
-                <Sidebar.Item
-                  active={tab === 'membership'}
-                  icon={HiOutlineMail}
-                  as='div'
-                >
-                  Membership Req
-                </Sidebar.Item>
-              </Link>
-              <Link to='/dashboard?tab=bearer' key="bearer">
-                <Sidebar.Item
-                  active={tab === 'bearer'}
-                  icon={HiUserAdd}
-                  as='div'
-                >
-                  Bearers
-                </Sidebar.Item>
-              </Link>
-              <Link to='/dashboard?tab=photo' key="photo">
-                <Sidebar.Item
-                  active={tab === 'photo'}
-                  icon={HiPhotograph}
-                  as='div'
-                >
-                  Photos
-                </Sidebar.Item>
-              </Link>
-              <Link to='/dashboard?tab=achievements' key="achievements">
-                <Sidebar.Item
-                  active={tab === 'achievements'}
-                  icon={HiStar}
-                  as='div'
-                >
-                  Achievements
-                </Sidebar.Item>
-              </Link>
-              <Link to='/dashboard?tab=activities' key="activities">
-                <Sidebar.Item
-                  active={tab === 'activities'}
-                  icon={HiAcademicCap}
-                  as='div'
-                >
-                  Activities
+                  Trip Itinaries
                 </Sidebar.Item>
               </Link>
             </>
