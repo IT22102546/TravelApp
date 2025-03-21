@@ -110,6 +110,9 @@ export default function AddItinerary() {
       console.error(error);
     }
   };
+  const handleCancel = () => {
+    navigate(`/dashboard?tab=itinary`);
+  };
 
   return (
     <div className="bg-green-200">
@@ -176,7 +179,7 @@ export default function AddItinerary() {
         
           <div className="flex flex-col justify-end w-full  sm:w-1/4">
             <Button type="submit" className="bg-green-400 w-full sm:w-auto mb-2" onClick={handleSubmit}>Create</Button>
-            <Button type="button" className="bg-black w-full sm:w-auto">Cancel</Button>
+            <Button type="button" className="bg-black w-full sm:w-auto" onClick={handleCancel}>Cancel</Button>
           </div>
         </div>
       </div>

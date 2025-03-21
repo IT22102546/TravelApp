@@ -8,6 +8,18 @@ export const createItinerary = async (req, res) => {
       return res.status(400).json({ message: 'All fields are required' });
     }
 
+    const timeMatch = averageTime.match(/^(\d+)\s*(hours?|HOURS?|Hours?|Hour?|HOUR?|hour?)$/);
+    
+    if (!timeMatch) {
+      return res.status(400).json({ message: 'Invalid averageTime format. Use "X Hours"' });
+    }
+
+    const timeValue = parseInt(timeMatch[1], 10);
+
+    if (timeValue > 100) {
+      return res.status(400).json({ message: 'Average time should be less than or equal to 100 hours' });
+    }
+
     const newItinerary = new Itinerary({ title, categories, image, averageTime, averageCost, location });
     await newItinerary.save();
     res.status(201).json(newItinerary);
@@ -15,6 +27,7 @@ export const createItinerary = async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 };
+
 
 
 export const getItineraries = async (req, res) => {
@@ -61,13 +74,31 @@ export const deleteItinerary = async (req, res) => {
 
 export const updateItinerary = async (req, res) => {
   try {
+    const { averageTime } = req.body;
+
+
+    if (averageTime) {
+      const timeMatch = averageTime.match(/^(\d+)\s*(hours?|HOURS?|Hours?|Hour?|HOUR?|hour?)$/);
+
+      if (!timeMatch) {
+        return res.status(400).json({ message: 'Invalid averageTime format. Use "X Hours"' });
+      }
+
+      const timeValue = parseInt(timeMatch[1], 10);
+      if (isNaN(timeValue) || timeValue > 100) {
+        return res.status(400).json({ message: 'Average time should be less than or equal to 100 hours' });
+      }
+    }
+
     const updatedItinerary = await Itinerary.findByIdAndUpdate(req.params.id, req.body, { new: true });
+
     if (!updatedItinerary) {
       return res.status(404).json({ message: 'Itinerary not found' });
     }
+
     res.status(200).json(updatedItinerary);
   } catch (error) {
-    res.status(500).json({ message: 'Server error' });
+    console.error('Error updating itinerary:', error); 
+    res.status(500).json({ message: error.message || 'Server error' });
   }
 };
-
